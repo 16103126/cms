@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use notify;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -44,14 +45,18 @@ class UserLoginController extends Controller
             return response()->json(['errors' => $validate->getMessageBag()->toArray()]);
         } 
 
-        $user = User::where('email', $request->email)->first();
-        if($user->isDeactivate == 1){
-            return response()->json(['deactiveMsg' => __('Your account is deactivated.')]);
-        }
+        // $user = User::where('email', $request->email)->first();
+        // if($user->isDeactivate == 1){
+        //     return response()->json(['deactiveMsg' => __('Your account is deactivated.')]);
+        // }
 
         $remember_me = $request->has('remember_me') ? 'true' : 'false';
 
         if(Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password], $remember_me)){
+
+            if(Auth::guard('user')->user()->isDeactivate == 1){
+                return response()->json(['deactiveMsg' => __('Your account is deactivated.')]);
+            }
 
             if($request->remember_me == 'on'){
                 Cookie::queue('email', $request->email, 1440);
@@ -62,6 +67,7 @@ class UserLoginController extends Controller
             }
             
             $message = __('You logged in successfully!');
+            notify()->success($message);
             return response()->json(['success' => $message, "redirect" => route("user.dashboard")]);
             
         }else{

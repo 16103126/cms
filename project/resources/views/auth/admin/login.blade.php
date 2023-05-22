@@ -11,9 +11,7 @@
           <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-              <a class="app-brand-link gap-2">
-                <span class="app-brand-text demo text-body fw-bolder">{{ __('Login') }}</span>
-              </a>
+              <h4>{{ __('Login') }}</h4>
             </div>
             <!-- /Logo -->
 
@@ -32,7 +30,7 @@
                 </div>
                 <div class="input-group input-group-merge">
                   <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" required/>
-                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  <span style="background-color: rgba(255, 255, 255, 0.1);" class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
               </div>
               <div class="mb-3">

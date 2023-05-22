@@ -1,0 +1,50 @@
+
+      body{
+        background-color: #042656 !important;
+      }
+      .card{
+        background-color: #042656 !important;
+      }
+      .alert{
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+      }
+      input{
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-family: "Open Sans", sans-serif !important;
+      }
+      input:-webkit-autofill {
+          -webkit-text-fill-color: rgba(255, 255, 255, 0.8) !important;
+      }
+      label{
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-family: "Open Sans", sans-serif !important;
+        font-size: 13px !important;
+      }
+      h4{
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-family: "Open Sans", sans-serif !important;
+      }
+      h5{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+      }
+      h5 a{
+        color: aliceblue !important;
+        font-family: "Open Sans", sans-serif !important;
+      }
+      h5 i{
+        color: aliceblue !important;
+        font-size: 30px !important;
+      }
+      h4 a{
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-family: "Open Sans", sans-serif !important;
+        
+      }
+      p{
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-family: "Open Sans", sans-serif !important;
+      }

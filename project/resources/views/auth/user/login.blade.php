@@ -3,26 +3,29 @@
 @section('title', __('User Login'))
 
 @section('content')
+<style>
+  .input{
+    background: rgba(255, 255, 255, 0.1);
+  }
+</style>
 <div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
       <div class="authentication-inner">
         <!-- Register -->
-        <div class="card">
+        <div class="card" style="background-color: #042656 !important;">
           <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-              <a class="app-brand-link gap-2">
-                <span class="app-brand-text demo text-body fw-bolder">{{ __('Login') }}</span>
-              </a>
+              <h4> @lang('Login')</h4>
             </div>
-            <form id="formAuthentication" class="mb-3" action="{{ route('user.login') }}" method="POST">
+            <form class="mb-3" action="{{ route('user.login') }}" method="POST">
               @csrf
               @include('partials.error')
               @include('partials.success')
               @include('partials.message')
               <div class="mb-3">
                 <label for="email" class="form-label">{{ __('Email') }}</label>
-                <input type="email" class="form-control" id="email" name="email" @if(Cookie::has('email')) value="{{ Cookie::get('email') }}" @endif placeholder="{{ __('Enter your email') }}" required/>
+                <input style="background-color: rgba(255, 255, 255, 0.1);" type="email" class="form-control" id="email" name="email" @if(Cookie::has('email')) value="{{ Cookie::get('email') }}" @endif placeholder="{{ __('Enter your email') }}" required/>
               </div>
               <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
@@ -33,12 +36,12 @@
                 </div>
                 <div class="input-group input-group-merge">
                   <input type="password" id="password" class="form-control" name="password" @if(Cookie::has('password')) value="{{ Cookie::get('password') }}" @endif  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" required/>
-                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  <span style="background-color: rgba(255, 255, 255, 0.1);" class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
               </div>
               <div class="mb-3">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="remember_me" id="remember_me" @if(Cookie::has('email')) checked @endif />
+                  <input style="background-color: rgba(255, 255, 255, 0.1);" class="form-check-input" type="checkbox" name="remember_me" id="remember_me" @if(Cookie::has('email')) checked @endif />
                   <label class="form-check-label" for="remember_me"> {{ __('Remember Me') }} </label>
                 </div>
               </div>
@@ -130,16 +133,3 @@
   </script>
 
 @endpush
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="card-header">@lang('Profile Information')</h5>
-                        

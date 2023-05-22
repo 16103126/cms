@@ -59,19 +59,15 @@ class AccountController extends Controller
             'nid.numeric'       => __('NID must be numeric character'),
         ];
 
-        $phone_number = $request->phonecode.$request->phone;
-
         $validate = Validator::make($request->all(), $rules, $customs);
         if($validate->fails()){
             return response()->json(['errors' => $validate->getMessageBag()->toArray()]);
         }
 
-        $input = $request->only('name', 'username', 'email', 'age', 'gender', 'nid', 'about', 'image');
+        $input = $request->only('name', 'username', 'email', 'phone_number', 'phone_code', 'age', 'gender', 'nid', 'about', 'image');
 
         $address = ['country' => $request->country, 'state' => $request->state, 'city' => $request->city, 'zip_code' => $request->zip_code];
         $input['address'] = json_encode($address);
-
-        $input['phone_number'] = $phone_number;
 
         $user = User::findOrFail($id);
 

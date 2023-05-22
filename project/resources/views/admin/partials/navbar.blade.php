@@ -41,7 +41,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="{{ asset('assets/dashboard/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src="{{ asset('assets/admin/img/profile/'.Auth::guard('admin')->user()->image) }}" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -50,12 +50,12 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="{{ asset('assets/dashboard/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="{{ asset('assets/admin/img/profile/'.Auth::guard('admin')->user()->image) }}" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block">{{ Auth::guard('admin')->user()->name }}</span>
+                            <small class="text-muted">@lang('Admin')</small>
                           </div>
                         </div>
                       </a>
@@ -64,24 +64,15 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item {{ (Request::is('admin/account/profile/show*')) ? 'active' : '' }}" href="{{ route('admin.account.profile.show', Auth::guard('admin')->user()->id) }}">
                         <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
+                        <span class="align-middle">@lang('My Profile')</span>
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item {{ (Request::is('admin/account/profile')) ? 'active' : '' }}" href="{{ route('admin.profile') }}">
                         <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
+                        <span class="align-middle">@lang('Settings')</span>
                       </a>
                     </li>
                     <li>
@@ -90,7 +81,7 @@
                     <li>
                       <a class="dropdown-item" href="{{ route('admin.logout') }}">
                         <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Log Out</span>
+                        <span class="align-middle">@lang('Log Out')</span>
                       </a>
                     </li>
                   </ul>

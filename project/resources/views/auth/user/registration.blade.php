@@ -11,9 +11,7 @@
           <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-              <a class="app-brand-link gap-2">
-                <span class="app-brand-text demo text-body fw-bolder">{{ __('Register') }}</span>
-              </a>
+              <h4> @lang('Registration')</h4>
             </div>
             <!-- /Logo -->
 
@@ -37,14 +35,14 @@
                 <label class="form-label" for="password">{{ __('Password') }}</label>
                 <div class="input-group input-group-merge">
                   <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" required aria-describedby="password"/>
-                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  <span style="background-color: rgba(255, 255, 255, 0.1) !important;" class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
               </div>
               <div class="mb-3 form-password-toggle">
                 <label class="form-label" for="confirm_password">{{ __('Confirm Password') }}</label>
                 <div class="input-group input-group-merge">
                   <input type="password" id="confirm_password" class="form-control" name="password_confirmation" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" required aria-describedby="password"/>
-                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  <span style="background-color: rgba(255, 255, 255, 0.1) !important;" class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
               </div>
               <div class="mb-3">

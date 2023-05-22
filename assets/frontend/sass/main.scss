@@ -1,0 +1,533 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Slabo+27px&display=swap');
+
+@import '_abstracts/_mixins';
+@import '_abstracts/_variables';
+@import '_base/_global';
+@import '_base/_typography';
+@import '_base/_about';
+@import '_base/color_control';
+@import '_layout/_footer';
+@import '_layout/_forms';
+@import '_layout/_header';
+@import '_layout/_banner';
+@import '_layout/_dashboard';
+@import '_layout/_section';
+@import '_layout/_animation';
+@import '_layout/_blog';
+@import '_components/_buttons';
+
+.menu {
+    >li {
+        &:last-child {
+            .submenu {
+                left: unset;
+                right: 0;
+            }
+        }
+    }
+}
+.pagination {
+    margin: -3px;
+    margin-top: 25px;
+    justify-content: center;
+
+    .page-item {
+        text-align: center;
+        padding: 3px;
+
+        a,
+        span {
+            width: 38px;
+            height: 38px;
+            line-height: 38px;
+            @include border-radius(3px);
+            background: rgba($color: $base-color, $alpha:.2);
+            color: $title-color;
+            padding: 0;
+            display: block;
+            margin: 0;
+            border: 1px solid rgba($color:$title-color, $alpha:.2);
+            span {
+                border: none;
+                line-height: 34px;
+            }
+            &.active,
+            &:hover {
+                background: $base-color;
+                color: $white-color;
+                border: 1px solid rgba($color:$title-color, $alpha:.2);
+                span {
+                    border: none;
+                }
+            }
+        }
+
+
+
+        &.disabled {
+            span {
+                background: rgba($color:$base-color, $alpha:.3);
+                border: none;
+                color: $title-color;
+            }
+        }
+    }
+}
+
+.chart-2 {
+    height: 450px;
+}
+.chart-3 {
+    .tradingview-widget-container {
+        width: 100% !important;
+        iframe {
+            width: 100% !important;
+        }
+    }
+}
+.chart-4 {
+    min-height: 450px;
+    height: 100%;
+}
+.chart-5 {
+    height: 380px;
+}
+
+
+
+
+
+.top--shape {
+    animation: topShape 5s linear infinite;
+    -webkit-animation: topShape 5s linear infinite;
+    -moz-animation: topShape 5s linear infinite;
+}
+@keyframes topShape {
+    0% {
+        @include transform(translate(-50px, -50px));
+    }
+    50% {
+        @include transform(translate(0, 0));
+    }
+    100% {
+        @include transform(translate(-50px, -50px));
+    }
+}
+
+.bottom--shape {
+    animation: bottomShape 5s linear infinite;
+    -webkit-animation: bottomShape 5s linear infinite;
+    -moz-animation: bottomShape 5s linear infinite;
+}
+@keyframes bottomShape {
+    0% {
+        @include transform(translate(50px, 50px));
+    }
+    50% {
+        @include transform(translate(0, 0));
+    }
+    100% {
+        @include transform(translate(50px, 50px));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*Trade Reports*/
+.trade__report__item {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    box-shadow: 0 0 5px rgba($color:$title-color, $alpha:.2);
+    @include border-radius(5px 0 5px 5px);
+    background: #fff;
+    .trade__report__thumb {
+        width: 250px;
+        @include border-radius(5px);
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+    }
+    .trade__report__content {
+        align-self: center;
+        width: calc(100% - 250px);
+        padding-left: 30px;
+        .title {
+            margin: 0;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 25px;
+        }
+    }
+    position: relative;
+    .trade__report__date {
+        background: $base-color;
+        display: inline-block;
+        color: $white-color;
+        @include border-radius(10px 10px 0 0);
+        padding: 5px 20px;
+        position: absolute;
+        right: 0;
+        bottom: 100%;
+    }
+    &:hover {
+        box-shadow: 0 0 15px rgba($color:$title-color, $alpha:.3);
+    }
+    @include breakpoint(lg) {
+        margin-left: 80px;
+        &::before {
+            content: "\f15c";
+            font-weight: 600;
+            font-family: "Line Awesome Free";
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            background: rgba($color:$base-color, $alpha:.8);
+            color: $white-color;
+            font-size: 30px;
+            @include border-radius(5px);
+            right: calc(100% + 20px);
+            top: 50%;
+            margin-top: -30px;
+        }
+        &::after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            right: 100%;
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            background: $white-color;
+            clip-path: polygon(0 0, 0% 100%, 100% 50%);
+            background: $base-color;
+            background: rgba($color:$base-color, $alpha:.8);
+        }
+        &:hover {
+            &::after,
+            &::before {
+                background: $base-color;
+            }
+        }
+        &.trade__report__single {
+            margin: 0;
+            &::after, &::before {
+                display: none;
+            }
+        }
+    }
+    &.trade__report__single {
+        @include breakpoint(md) {
+            padding: 0;
+            align-items: start;
+            box-shadow: none !important;
+            .trade__report__content {
+                padding: 30px;
+                align-self: flex-start;
+                @include border-radius(5px 0 5px 5px);
+                box-shadow: 0 0 5px rgba($color:$title-color, $alpha:.2);
+                &:hover {
+                    box-shadow: 0 0 15px rgba($color:$title-color, $alpha:.3);
+                }
+                width: calc(100% - 400px);
+            }
+            justify-content: space-between;
+            .trade__report__thumb {
+                width: 370px;
+            }
+            @include breakpoint(max-lg) {
+                .trade__report__thumb {
+                    width: 250px;
+                }
+                .trade__report__content {
+                    width: calc(100% - 280px);
+                }
+            }
+        }
+    }
+    .content__report {
+        text-decoration: none;
+        color: $title-color;
+        &:hover {
+            color: $base-color;
+        }
+    }
+    @include breakpoint(max-md) {
+        .trade__report__thumb, .trade__report__content {
+            width: 100%;
+        }
+        .trade__report__content {
+            padding: 30px 0 0;
+        }
+    }
+    @media screen and (max-width:450px) {
+        padding: 20px;
+        .trade__report__content {
+            padding: 20px 0 0;
+        }
+    }
+}
+
+
+/*Way Menu Wrapper*/
+.way__menu__wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: $white-color;
+    padding: 5px 0;
+}
+.way__menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    li {
+        padding: 5px;
+        a {
+            padding: 7px 25px;
+            font-family: $heading;
+            background: rgba($color:$base-color, $alpha:.2);
+            color: $title-color;
+            @include border-radius(5px);
+            &.active {
+                background: $base-color;
+                color: $white-color;
+            }
+        }
+    }
+}
+.strategy__menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0 -15px 20px;
+    @include breakpoint(sm) {
+        margin-bottom: 40px;
+    }
+    li {
+        padding: 0 15px 20px;
+        a {
+            font-family: $heading;
+            text-decoration: none;
+            color: $title-color;
+            text-align: center;
+            display: block;
+            i {
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                @include border-radius(3px);
+                background: rgba($color:$base-color, $alpha:.2);
+                color: $title-color; font-size: 24px;
+                @include transition($transition);
+                margin: 0 auto 10px;
+            }
+            span {
+                display: block;
+                font-size: 18px;
+            }
+            &:hover {
+                i {
+                    background: $base-color;
+                    color: $white-color
+                }
+            }
+        }
+        @include breakpoint(max-lg) {
+            width: calc(100% / 4);
+        }
+        @include breakpoint(max-md) {
+            width: calc(100% / 3);
+        }
+        @media screen and (max-width:400px) {
+            width: calc(100% / 2);
+        }
+    }
+}
+.strategy__item {
+    display: flex;
+    flex-wrap: wrap;
+    &:not(:last-child) {
+        margin-bottom: 50px;
+    }
+    .strategy__thumb {
+        width: 350px;
+        @include border-radius(5px);
+        @include transform(skew(3deg, -2deg));
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            @include border-radius(inherit);
+        }
+    }
+    .strategy__content {
+        padding-inline-start: 30px;
+        width: calc(100% - 350px);
+        .strategy__title {
+            color: $base-color;
+            margin-bottom: 20px;
+        }
+    }
+    &:nth-of-type(even) {
+        flex-direction: row-reverse;
+        .strategy__thumb {
+            @include transform(skew(-3deg, 2deg));
+        }
+        .strategy__content {
+            padding: 0;
+            padding-inline-end: 30px;
+        }
+    }
+    @include breakpoint(max-md) {
+        .strategy__content, .strategy__thumb {
+            width: 100%;
+            padding: 0;
+        }
+        .strategy__thumb {
+            margin-bottom: 30px;
+        }
+    }
+}
+.road__map__item {
+    @include breakpoint(max-md) {
+        text-align: center;
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
+    }
+}
+.doc__view__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -15px 20px;
+}
+.doc__view__item {
+    text-align: center;
+    padding: 0 15px 30px;
+    .doc__view__thumb {
+        line-height: 1;
+        font-size: 60px;
+        color: $base-color;
+        margin-bottom: 20px;
+    }
+    .doc__view__content {
+        .title {
+            margin-bottom: 15px;
+        }
+        .view__buttons {
+            display: flex;
+            justify-content: center;
+            margin: -5px;
+            li {
+                padding: 5px 15px;
+                a {
+                    font-size: 24px;
+                    line-height: 1;
+                    color: $body-color;
+                    &:hover {
+                        color: $base-color;
+                    }
+                }
+            }
+        }
+    }
+    .doc__view__inner {
+        padding: 0 15px;
+    }
+}
+.official__content {
+    p {
+        font-style: italic;
+        @include breakpoint(sm) {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+    }
+}
+
+
+.contact--item {
+    position: relative;
+    .contact-item {
+        position: relative;
+        padding: 40px 20px;
+        margin-bottom: 30px;
+        z-index: 1;
+        background: $section-bg;
+    }
+    .contact-content {
+        text-align: center;
+        .title {
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+        ul {
+            li {
+                padding: 0;
+                span {
+                    display: block;
+                }
+                a {
+                    color: $body-color;
+                    &:first-letter {
+                        text-transform: lowercase;
+                    }
+                    &:hover {
+                        color: $base-color;
+                    }
+                }
+            }
+        }
+    }
+    .contact-thumb {
+        margin: 0 auto 25px;
+        @extend %flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 70px;
+        line-height: 1;
+        color: $base-color;
+    }
+    @include transition($transition);
+    &::before,
+    &::after {
+        @extend %pa;
+        top: 0;
+        left: 0;
+        background: $base-color;
+        width: 100%;
+        z-index: -1;
+        height: 100%;
+        @include transition($transition);
+    }
+    &::before {
+        background: $body-bg;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+    &.active,
+    &:hover {
+        &::before {
+            @include transform(translate(5px, 5px));
+        }
+        &::after {
+            @include transform(translate(10px, 10px));
+        }
+    }
+}

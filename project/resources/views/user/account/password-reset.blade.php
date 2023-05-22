@@ -69,7 +69,7 @@
                                             <div class="col-sm-3">
                                             </div>
                                             <div class="col-sm-3">
-                                                <button type="submit" class="btn btn-primary">{{ __('Reset') }}</button>
+                                                <button type="submit" class="btn btn-primary active">{{ __('Reset') }}</button>
                                             </div>
                                         </div>
                                     </div>

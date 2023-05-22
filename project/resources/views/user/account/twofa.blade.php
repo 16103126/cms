@@ -71,7 +71,7 @@
                                         </div>
                                     </div>
                                     <div class="row col-sm-3 mb-3">
-                                        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                        <button type="submit" class="btn btn-primary active">{{ __('Submit') }}</button>
                                     </div>
                                 </form>
                             </div>

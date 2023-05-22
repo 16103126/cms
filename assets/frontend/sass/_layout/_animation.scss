@@ -1,0 +1,173 @@
+.fadeInUpSm {
+    animation: fadeInUpSm 1s;
+    -webkit-animation: fadeInUpSm 1s;
+    -moz-animation: fadeInUpSm 1s;
+}
+@keyframes fadeInUpSm {
+    0% {
+        @include transform(translateY(60px));
+        opacity: 0;
+    }
+    100% {
+        @include transform(translateY(0));
+        opacity: 1;
+    }
+}
+.fadeInDownSm {
+    animation: fadeInDownSm 1s;
+    -webkit-animation: fadeInDownSm 1s;
+    -moz-animation: fadeInDownSm 1s;
+}
+@keyframes fadeInDownSm {
+    0% {
+        @include transform(translateY(-60px));
+        opacity: 0;
+    }
+    100% {
+        @include transform(translateY(0));
+        opacity: 1;
+    }
+}
+.fadeInUp {
+    animation: fadeInUp 1s;
+    -webkit-animation: fadeInUp 1s;
+    -moz-animation: fadeInUp 1s;
+}
+@keyframes fadeInUp {
+    0% {
+        @include transform(translateY(200px));
+        opacity: 0;
+    }
+    100% {
+        @include transform(translateY(0));
+        opacity: 1;
+    }
+}
+.fadeInDown {
+    animation: fadeInDown 1s;
+    -webkit-animation: fadeInDown 1s;
+    -moz-animation: fadeInDown 1s;
+}
+@keyframes fadeInDown {
+    0% {
+        @include transform(translateY(-200px));
+        opacity: 0;
+    }
+    100% {
+        @include transform(translateY(0));
+        opacity: 1;
+    }
+}
+@include breakpoint(max-md) {
+    .fadeInDown, .fadeInDownSm, .fadeInUp, .fadeInUpSm {
+        animation: none !important;
+        -webkit-animation: none !important;
+        -moz-animation: none !important;
+    }
+}
+
+/*Preloader*/
+.loader {
+    filter: url("#goo");
+    position: relative;
+    width: 100%;
+    height: 100px;
+    max-width: 500px;
+    &::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: $base-color;
+        margin: 0 auto;
+        position: absolute;
+        top: 25px;
+        left: calc(50% - 25px);
+        -webkit-animation: scale 2.5s ease-in-out infinite;
+                animation: scale 2.5s ease-in-out infinite;
+    }
+    div {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: $base-color;
+        top: 35px;
+        left: 50%;
+        -webkit-animation: move 2.5s ease-in-out infinite alternate;
+                animation: move 2.5s ease-in-out infinite alternate;
+        &::after, &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: $base-color;
+        }
+        &::before {
+            left: -75px;
+          }
+          &::after {
+            left: 75px;
+          }
+    }
+}
+@-webkit-keyframes move {
+0% {
+transform: translateX(-150px);
+}
+100% {
+transform: translateX(150px);
+}
+}
+  
+@keyframes move {
+0% {
+    transform: translateX(-150px);
+}
+100% {
+    transform: translateX(150px);
+}
+}
+@-webkit-keyframes scale {
+10% {
+    transform: scale(1);
+}
+50% {
+    transform: scale(1.25);
+}
+90% {
+    transform: scale(1);
+}
+}
+@keyframes scale {
+10% {
+    transform: scale(1);
+}
+50% {
+    transform: scale(1.25);
+}
+90% {
+    transform: scale(1);
+}
+}
+.preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: $white-color;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    z-index: 99999;
+}
+svg {
+    position: absolute;
+    z-index: -100;
+    pointer-events: none;
+}

@@ -31,6 +31,7 @@ class User extends Authenticatable
         'image',
         'email',
         'phone_number',
+        'phone_code',
         'password',
         'google_id',
         'facebook_id',

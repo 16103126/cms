@@ -102,10 +102,10 @@
                                     <div class="col-sm-10">
                                         <div class="input-group">
                                             <div class="col-sm-3">
-                                                <select id="phoneNumber" name="phonecode" class="form-select input-group-text">
+                                                <select id="phoneNumber" name="phone_code" class="form-select input-group-text">
                                                 </select>
                                             </div>
-                                            <input type="number" name="phone" class="form-control" id="number" placeholder="Phone number"/>
+                                            <input type="number" name="phone_number" class="form-control" id="number" placeholder="Phone number"/>
                                         </div>
                                     </div>
                                     </div>
@@ -155,7 +155,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm-5 ">
-                                                <input type="number" name="zip_code" class="form-control" id="address" placeholder="Zip code" value="{{ $address->zip_code }}"/>
+                                                <input type="number" id="zipCode" name="zip_code" class="form-control" id="address" placeholder="Zip code" value=""/>
                                             </div>
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@
                                     </div>
                                     <div class="row justify-content-end">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
+                                        <button type="submit" class="btn btn-primary active">{{ __('Save Changes') }}</button>
                                     </div>
                                     </div>
                                 </form>
@@ -219,7 +219,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-danger deactivate-account">{{ __('Deactivate Account') }}</button>
+                            <button type="submit" class="btn btn-danger deactivate-account active">{{ __('Deactivate Account') }}</button>
                         </form>
                     </div>
                 </div>
@@ -384,10 +384,11 @@
                     $("#nid").val(response.user.nid);
                     $("#about").val(response.user.about);
                     let address = response.address;
+                    $('#zipCode').val(address.zip_code);
                     $.each(response.countries, function(index, country){
                         let selected = address.country == country.name ? 'selected' : '';
                         $('#country').append(`<option value="${country.name}" ${selected}  data-id="${country.id}">${country.name}</option>`);
-                        $('#phoneNumber').append(`<option value="${country.phonecode}" ${selected}> ${country.code}(+${country.phonecode}) </option>`)
+                        $('#phoneNumber').append(`<option value="${country.phonecode}" ${selected}> ${country.code}(${country.phonecode}) </option>`)
                     });
                     State();
                 }
@@ -396,8 +397,12 @@
 
         $(document).on('change','#country',function () {
             $('#state').each(function(){
-                $(this).find('option').hide();
+                $(this).find('option').remove();
             });
+            $('#city').each(function(){
+                $(this).find('option').remove();
+            });
+            $('#zipCode').val('');
             let country_id  = $(this).find(':selected').attr('data-id');
             let url         = "{{route('user.state', ':id')}}" ;
             url             = url.replace(':id', country_id);
@@ -416,8 +421,9 @@
 
         $(document).on('change','#state',function () {
             $('#city').each(function(){
-                $(this).find('option').hide();
+                $(this).find('option').remove();
             });
+            $('#zipCode').val('');
             let state_id    = $(this).find(':selected').attr('data-id');
             let url         = "{{route('user.city', ':id')}}" ;
             url             = url.replace(':id', state_id);
@@ -436,6 +442,10 @@
                     
                 }
             })
+        });
+
+        $(document).on('change', '#city', function(){
+            $('#zipCode').val('');
         });
     </script>
 @endpush

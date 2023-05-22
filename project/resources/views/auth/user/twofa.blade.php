@@ -10,9 +10,7 @@
             <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
-                <span class="app-brand-text demo text-body fw-bolder">{{ __('Two Factor Varification') }}</span>
-                </a>
+                <h4>{{ __('Two Factor Varification') }}</h4>
             </div>
             <!-- /Logo -->
             <form id="formAuthentication" class="mb-3" action="{{ route('user.twofa') }}" method="POST">

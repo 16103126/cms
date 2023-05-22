@@ -10,9 +10,7 @@
             <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
-                <span class="app-brand-text demo text-body fw-bolder">{{ __('Forgot Password') }}</span>
-                </a>
+                <h4>{{ __('Forgot Password') }}</h4>
             </div>
             <!-- /Logo -->
             <p class="mb-4">{{ __('Enter your email and we will send you instructions to reset your password') }}</p>
