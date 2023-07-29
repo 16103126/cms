@@ -56,8 +56,8 @@ class AdminLanguageController extends Controller
         ];
 
         $customs = [
-            'language.required' => 'Language is required',
-            'language.unique' => 'This language is already taken.'
+            'language.required' => __('Language is required'),
+            'language.unique' => __('This language is already taken.')
         ];
 
         $validate = Validator::make($request->all(),$rules, $customs);
@@ -126,8 +126,8 @@ class AdminLanguageController extends Controller
         ];
 
         $customs = [
-            'language.required' => 'Language is required',
-            'language.unique' => 'This language is already taken.'
+            'language.required' => __('Language is required'),
+            'language.unique' =>__('This language is already taken.')
         ];
 
         $validate = Validator::make($request->all(),$rules, $customs);

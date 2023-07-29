@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Page;
 use App\Models\Submenu;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -45,9 +47,9 @@ class SubmenuController extends Controller
 
         $input = $request->only('name', 'url', 'menu_id', 'language_id');
 
-        $menu = new Submenu();
-        $input['order_id'] = $menu->max('order_id') + 1;
-        $menu->fill($input)->save();
+        $submenu = new Submenu();
+        $input['order_id'] = $submenu->max('order_id') + 1;
+        $submenu->fill($input)->save();
         $message = __('Submenu create successfully!');
 
         return response()->json(['successs' => $message]);
@@ -121,8 +123,17 @@ class SubmenuController extends Controller
             $input['isPrimary'] = 0;
         }
 
-        $menu = Submenu::findOrFail($id);
-        $menu->fill($input)->update();
+        $submenu = Submenu::findOrFail($id);
+
+        if(Page::where('name', $submenu->name)->exists())
+        {
+            $page = Page::where('name', $submenu->name)->first();
+            $page->name = $input['name'];
+            $page->slug = Str::slug($input['name']);
+            $page->update();
+        }
+
+        $submenu->fill($input)->update();
         $message = __('Submenu Update successfully!');
 
         return response()->json(['submenusuccess' => $message]);
@@ -136,6 +147,13 @@ class SubmenuController extends Controller
             $message = __('Can not delete the primary submenu.');
             return response()->json(['infoMsg' => $message]);
         }
+
+        if(Page::where('name', $submenu->name)->exists())
+        {
+            $message = __('Delete the page first!');
+            return response()->json(['infoMsg' => $message]);
+        }
+
         $submenu->delete();
         $message = 'Submenu deleted successfully!';
         return response()->json(['deleteMsg' => $message]);

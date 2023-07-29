@@ -18,4 +18,19 @@ class WebsiteLanguage extends Model
     {
         return $this->hasMany(Menu::class, 'language_id', 'id');
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'language_id', 'id');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'language_id', 'id');
+    }
+
+    public function page_settings()
+    {
+        return $this->hasMany(PageSetting::class, 'language_id', 'id');
+    }
 }

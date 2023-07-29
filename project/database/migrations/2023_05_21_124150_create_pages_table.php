@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('meta_keywords');
-            $table->string('meta_description');
+            $table->text('meta_description');
             $table->integer('language_id')->unsigned();
+            $table->integer('menu_id')->unsigned();
             $table->timestamps();
         });
     }

@@ -2,8 +2,8 @@
     <div class="container">
         <div class="header__area">
             <div class="logo">
-                <a href="#0">
-                    <img src="{{ asset('assets/frontend/images/logo/logo.png') }}" alt="logo">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('assets/frontend/images/logo/'.generalSetting()->website_logo) }}" alt="logo">
                 </a>
             </div>
             <ul class="menu">
@@ -80,7 +80,11 @@
                     <option value="bn">Bangla</option>
                 </select>
                 <div class="d-md-flex d-none">
+                    @if (Auth::guard('user')->user())
+                    <a href="{{ route('user.logout') }}" class="cmn--btn">@lang('Logout')</a>
+                    @else
                     <a href="{{ route('user.login') }}" class="cmn--btn">@lang('Sign In')</a>
+                    @endif
                 </div>
             </div>
         </div>

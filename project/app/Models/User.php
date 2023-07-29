@@ -96,4 +96,14 @@ class User extends Authenticatable
         
         return redirect()->route('user.twofa.form');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id', 'id');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class, 'user_id', 'id');
+    }
 }

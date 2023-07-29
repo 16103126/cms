@@ -39,9 +39,7 @@
                                   <div class="button-wrapper">
                                     <form id="imageForm" action="{{ route('admin.profile.image.update', $admin->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        <div id="imgMsg" class="d-none">
-
-                                        </div>
+                                        <div id="imgMsg" class="d-none"></div>
                                         <label for="upload" class="btn btn-warning me-2 mb-4" tabindex="0">
                                         <span class="d-none d-sm-block">{{ __('Upload profile image') }}</span>
                                         <i class="bx bx-upload d-block d-sm-none"></i>

@@ -124,7 +124,7 @@
                     $.each(response.errors, function(index, error){
                         $('#successMsg').addClass('d-none');
                         $('#errorMsg').removeClass('d-none');
-                        $('errorMsg').html(`<p>${error}</p>`);
+                        $('#errorMsg').html(`<p>${error}</p>`);
                     })
                 }
             }

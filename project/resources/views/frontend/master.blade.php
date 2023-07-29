@@ -3,17 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="{{ DB::table('seos')->where('id', 1)->first()->meta_description }} @yield('description')">
+    <meta name="keywords" content="{{ DB::table('seos')->where('id', 1)->first()->meta_keywords }} @yield('keywords')">
 
-    <title>Impero Solitions HTML Template</title>
+    <title>{{ DB::table('seos')->where('id', 1)->first()->title }} | @yield('title')</title>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/forntend/images/icon/'.generalSetting()->website_icon) }}" />
 
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/line-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/lightbox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
 
-    <link rel="shortcut icon" href="{{ asset('assets/forntend/images/favicon.png') }}" type="image/x-icon">
+    @stack('css')
 
 </head>
 
@@ -29,11 +31,6 @@
     <!-- Header Section Starts -->
 	@include('frontend.partials.header')
     <!-- Header Section Ends -->
-
-
-    <!-- Banner Section Starts -->
-    @include('frontend.partials.banner')
-    <!-- Banner Section Ends -->
 
     @yield('content')
 
@@ -60,6 +57,7 @@
             });
         });
     </script>
+    @stack('js')
 
 </body>
 </html>

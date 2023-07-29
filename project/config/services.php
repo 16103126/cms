@@ -32,8 +32,8 @@ return [
     ],
 
     'google' => [
-        'client_id' => '576506575164-9gd79ci6gv2b7qgh0ec8r41lr7abn83u.apps.googleusercontent.com', //USE FROM FACEBOOK DEVELOPER ACCOUNT
-        'client_secret' => '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', //USE FROM FACEBOOK DEVELOPER ACCOUNT
+        'client_id' => '576506575164-9gd79ci6gv2b7qgh0ec8r41lr7abn83u.apps.googleusercontent.com',
+        'client_secret' => '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',
         'redirect' => 'http://localhost/wallet/user/login/google/callback'
     ],
 
@@ -42,5 +42,4 @@ return [
         'client_secret' => '4218d3763ae8ccb8b40118af58e64f57',
         'redirect' => 'http://localhost/wallet/user/login/facebook/callback',
     ],
-
 ];

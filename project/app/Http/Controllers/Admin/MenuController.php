@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Menu;
+use App\Models\Page;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\WebsiteLanguage;
 use App\Http\Controllers\Controller;
@@ -145,6 +147,15 @@ class MenuController extends Controller
         }
 
         $menu = Menu::findOrFail($id);
+
+        if(Page::where('name', $menu->name)->exists())
+        {
+            $page = Page::where('name', $menu->name)->first();
+            $page->name = $input['name'];
+            $page->slug = Str::slug($input['name']);
+            $page->update();
+        }
+        
         $menu->fill($input)->update();
         $message = __('Menu update successfully!');
 
@@ -163,6 +174,12 @@ class MenuController extends Controller
         if($menu->submenus()->count() > 0)
         {
             $message = __('Delete the submenu first!');
+            return response()->json(['infoMsg' => $message]);
+        }
+
+        if(Page::where('name', $menu->name)->exists())
+        {
+            $message = __('Delete the page first!');
             return response()->json(['infoMsg' => $message]);
         }
 

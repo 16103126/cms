@@ -256,4 +256,9 @@ class AccountController extends Controller
         $address = json_decode($user->address);
         return view('user.account.profile-show', compact('user', 'address'));
     }
+
+    public function status($id)
+    {
+        
+    }
 }
